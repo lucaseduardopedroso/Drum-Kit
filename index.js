@@ -5,6 +5,7 @@ for(var i = 0; i < vector.length; i++){
     vector[i].addEventListener("click", function (){
         var buttonInnerHTML = this.innerHTML;
             makeSound(buttonInnerHTML);
+            buttonAnimation(buttonInnerHTML);
         }
     )};
 
@@ -12,6 +13,7 @@ for(var i = 0; i < vector.length; i++){
 document.addEventListener("keydown", function(){
     var keyPressed = event.key;
         makeSound(keyPressed);
+        buttonAnimation(keyPressed);
 })
 
 //Function to Make Drum Sounds
@@ -56,4 +58,14 @@ function makeSound(key){
             console.log(key);
             break;
     }
+}
+
+function buttonAnimation(key){
+    var pressedButton = document.querySelector("." + key);
+        pressedButton.classList.add("pressed");
+
+        setTimeout(function() {
+            pressedButton.classList.remove("pressed");
+        }, 100);
+
 }
